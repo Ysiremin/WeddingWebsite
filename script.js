@@ -4,42 +4,44 @@
 
 /* ---- COUNTDOWN TIMER ---- */
 (function () {
-  // Wedding date: 12 June 2026, 19:00 (Istanbul UTC+3)
-  const weddingDate = new Date('2026-06-12T19:00:00+03:00');
-
-  const daysEl    = document.getElementById('days');
-  const hoursEl   = document.getElementById('hours');
-  const minutesEl = document.getElementById('minutes');
-  const secondsEl = document.getElementById('seconds');
-
   function pad(n) { return String(n).padStart(2, '0'); }
 
-  function updateCountdown() {
-    const now  = new Date();
-    const diff = weddingDate - now;
+  function makeCountdown(targetDate, ids) {
+    const els = {
+      d: document.getElementById(ids.days),
+      h: document.getElementById(ids.hours),
+      m: document.getElementById(ids.minutes),
+      s: document.getElementById(ids.seconds),
+    };
 
-    if (diff <= 0) {
-      if (daysEl)    daysEl.textContent    = '00';
-      if (hoursEl)   hoursEl.textContent   = '00';
-      if (minutesEl) minutesEl.textContent = '00';
-      if (secondsEl) secondsEl.textContent = '00';
-      return;
+    function update() {
+      const diff = targetDate - new Date();
+      if (diff <= 0) {
+        Object.values(els).forEach(el => { if (el) el.textContent = '00'; });
+        return;
+      }
+      const total = Math.floor(diff / 1000);
+      if (els.d) els.d.textContent = pad(Math.floor(total / 86400));
+      if (els.h) els.h.textContent = pad(Math.floor(total / 3600) % 24);
+      if (els.m) els.m.textContent = pad(Math.floor(total / 60) % 60);
+      if (els.s) els.s.textContent = pad(total % 60);
     }
 
-    const totalSeconds = Math.floor(diff / 1000);
-    const s = totalSeconds % 60;
-    const m = Math.floor(totalSeconds / 60) % 60;
-    const h = Math.floor(totalSeconds / 3600) % 24;
-    const d = Math.floor(totalSeconds / 86400);
-
-    if (daysEl)    daysEl.textContent    = pad(d);
-    if (hoursEl)   hoursEl.textContent   = pad(h);
-    if (minutesEl) minutesEl.textContent = pad(m);
-    if (secondsEl) secondsEl.textContent = pad(s);
+    update();
+    setInterval(update, 1000);
   }
 
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
+  // Nikah: 7 Haziran 2026, 13:30 İstanbul (UTC+3)
+  makeCountdown(new Date('2026-06-07T13:30:00+03:00'), {
+    days: 'nikah-days', hours: 'nikah-hours',
+    minutes: 'nikah-minutes', seconds: 'nikah-seconds'
+  });
+
+  // Düğün: 12 Haziran 2026, 19:00 İstanbul (UTC+3)
+  makeCountdown(new Date('2026-06-12T19:00:00+03:00'), {
+    days: 'dugun-days', hours: 'dugun-hours',
+    minutes: 'dugun-minutes', seconds: 'dugun-seconds'
+  });
 })();
 
 /* ---- SCROLL REVEAL ---- */
