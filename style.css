@@ -136,6 +136,17 @@ body {
   animation: fadeDown 1s ease 0.4s both;
 }
 
+@media (max-width: 600px) {
+  .couple-names {
+    flex-direction: column;
+    gap: 6px;
+    white-space: normal;
+  }
+  .heart-divider {
+    width: 44px;
+  }
+}
+
 .name-script {
   font-family: var(--font-script);
   font-size: clamp(3rem, 8vw, 5.5rem);
@@ -186,15 +197,6 @@ body {
   margin-top: 4px;
 }
 
-.invite-text {
-  font-family: var(--font-serif);
-  font-size: clamp(1rem, 2.5vw, 1.2rem);
-  font-style: italic;
-  color: var(--text-mid);
-  line-height: 1.9;
-  margin-top: 28px;
-  animation: fadeDown 1s ease 0.8s both;
-}
 
 .scroll-hint {
   margin-top: 36px;
