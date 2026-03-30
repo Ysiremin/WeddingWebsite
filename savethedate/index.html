@@ -16,7 +16,7 @@
   <meta name="twitter:card"       content="summary" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Pinyon+Script&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Lato:wght@300;400;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html, body { min-height: 100%; font-family: 'Lato', sans-serif; overflow-x: hidden; background: #12080c; }
@@ -286,13 +286,15 @@
     .reel-item {
       height: 94px;
       display: flex; align-items: center; justify-content: center;
-      font-family: 'Cormorant Garamond', serif;
-      font-weight: 600; color: #180810;
+      font-family: 'Playfair Display', serif;
+      font-weight: 700; color: #180810;
+      line-height: 1;
       user-select: none; flex-shrink: 0;
     }
-    .reel-day   .reel-item { font-size: clamp(1.1rem, 3.5vw, 1.6rem); }
-    .reel-month .reel-item { font-size: clamp(0.55rem, 1.8vw, 0.9rem); letter-spacing: 0.04em; }
-    .reel-year  .reel-item { font-size: clamp(0.55rem, 1.8vw, 0.88rem); }
+    .reel-day .reel-item { transform: translateY(-3px); }
+    .reel-day   .reel-item { font-size: clamp(1.0rem, 2.8vw, 1.4rem); }
+    .reel-month .reel-item { font-size: clamp(0.72rem, 2.2vw, 1.05rem); letter-spacing: 0; }
+    .reel-year  .reel-item { font-size: clamp(0.62rem, 1.8vw, 0.88rem); }
     .reel-item.is-question { font-size: clamp(1.3rem, 4vw, 1.8rem) !important; letter-spacing: 0; }
     .reel-hl {
       position: absolute; top:50%; left:0; right:0;
