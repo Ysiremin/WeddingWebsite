@@ -47,7 +47,6 @@
 /* ---- SCROLL REVEAL ---- */
 (function () {
   const revealTargets = [
-    '.countdown-section',
     '.events-section',
     '.event-card',
     '.scene-section',
